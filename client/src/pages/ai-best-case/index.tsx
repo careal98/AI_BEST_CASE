@@ -6,7 +6,6 @@ import type { CheckedType, DataType, FormType } from "src/types";
 
 const limit = 3;
 
-const serverUrl = import.meta.env.VITE_API_BASE_URL;
 export function AI_BEST_CASE() {
   const [searchParams] = useSearchParams();
   const year = searchParams.get("year");
@@ -60,7 +59,7 @@ export function AI_BEST_CASE() {
     // const offset = data.length;
     try {
       const response = await fetch(
-        `${serverUrl}/api/data/?year=${year}&month=${month}&doctorId=${doctorId}&offset=${offset}&limit=${limit}`
+        `/api/data/?year=${year}&month=${month}&doctorId=${doctorId}&offset=${offset}&limit=${limit}`
       );
       const result = await response.json();
 
@@ -118,7 +117,7 @@ export function AI_BEST_CASE() {
   const checkData = async () => {
     try {
       const response = await fetch(
-        `${serverUrl}/api/check/count/?year=${year}&month=${month}&doctorId=${doctorId}`
+        `/api/check/count/?year=${year}&month=${month}&doctorId=${doctorId}`
       );
       const result = await response.json();
 

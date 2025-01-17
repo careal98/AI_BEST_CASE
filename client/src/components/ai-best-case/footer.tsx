@@ -2,7 +2,6 @@ import { useFormContext } from "react-hook-form";
 import { useSearchParams } from "react-router-dom";
 import type { FormType } from "src/types";
 
-const serverUrl = import.meta.env.VITE_API_BASE_URL;
 interface Props {
   handleFetchMore: () => void;
   setIsPostEnd: (v: boolean) => void;
@@ -45,7 +44,7 @@ const Footer = ({
       { selected: [...selectedData] },
       { unselected: [...disSelectedData] },
     ];
-    fetch(`${serverUrl}/api/best`, {
+    fetch(`/api/best`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
