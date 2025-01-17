@@ -38,7 +38,7 @@ export default defineConfig(({ command, mode }) => {
     },
     base: './', // 상대 경로 설정
     build: {
-      outDir: '../dist',
+      outDir: 'client/dist',
     },
   };
 });
