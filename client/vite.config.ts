@@ -11,6 +11,7 @@ export default defineConfig(({ command, mode }) => {
   const isBuild = command === "build";
 
   return {
+    root: './client',
     plugins: [react()],
     resolve: {
       alias: {
@@ -37,7 +38,7 @@ export default defineConfig(({ command, mode }) => {
     },
     base: './', // 상대 경로 설정
     build: {
-      outDir: 'dist',
+      outDir: '../dist',
     },
   };
 });
