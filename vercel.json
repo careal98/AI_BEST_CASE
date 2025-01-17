@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "client/src/pages/**/*",
+            "src": "client/src/pages/**/*.tsx",
             "use": "@vercel/static"
         },
         {
