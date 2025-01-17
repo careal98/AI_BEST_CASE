@@ -11,6 +11,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import Skeletons from "./skeletons";
 import { useSearchParams } from "react-router-dom";
 
+const serverUrl = import.meta.env.VITE_API_BASE_URL;
 interface ListProps {
   isCopySelected: string[];
   setIsCopySelected: React.Dispatch<React.SetStateAction<string[]>>;
@@ -50,7 +51,7 @@ const List = forwardRef<HTMLDivElement, ListProps>(
     const checkData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5002/api/check/?year=${year}&month=${month}&doctorId=${doctorId}`
+          `${serverUrl}/api/check/?year=${year}&month=${month}&doctorId=${doctorId}`
         );
         const result = await response.json();
 

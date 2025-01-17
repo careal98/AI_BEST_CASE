@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 const app = express();
-const port = 5002;
+const port = import.meta.env.VITE_API_BASE_URL;
 dotenv.config();
 
 const corsOptions = {
