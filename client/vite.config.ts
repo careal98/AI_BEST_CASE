@@ -25,16 +25,15 @@ export default defineConfig(({ command, mode }) => {
       drop: isBuild ? ["console"] : undefined,
     },
     server: {
-      // port: 3000,
       host: true,
       hmr: {
         protocol: "ws",
         host: "localhost",
         timeout: 0,
       },
-      // proxy: {
-      //   "/api": "http://localhost:5000",
-      // },
+      proxy: {
+        "/api": "http://localhost:5000", // 로컬 개발 시 프록시
+      },
     },
     base: './', // 상대 경로 설정
     build: {
