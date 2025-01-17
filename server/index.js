@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 const app = express();
-const port = import.meta.env.VITE_API_BASE_URL;
 dotenv.config();
 
 const corsOptions = {
@@ -314,6 +313,3 @@ app.post("/api/best", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
