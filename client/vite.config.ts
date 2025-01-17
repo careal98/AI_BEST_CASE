@@ -25,7 +25,7 @@ export default defineConfig(({ command, mode }) => {
       drop: isBuild ? ["console"] : undefined,
     },
     server: {
-      port: 3000,
+      // port: 3000,
       host: true,
       hmr: {
         protocol: "ws",
@@ -36,9 +36,9 @@ export default defineConfig(({ command, mode }) => {
       //   "/api": "http://localhost:5000",
       // },
     },
-    preview: {
-      port: 3000,
-      host: true,
+    base: './', // 상대 경로 설정
+    build: {
+      outDir: 'dist',
     },
   };
 });
