@@ -13,6 +13,7 @@ export const config = {
 };
 export async function connectDB(query) {
   try {
+    console.dir(config)
     await sql.connect(config);
     const result = await sql.query(query);
     return result.recordset;

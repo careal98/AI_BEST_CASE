@@ -16,8 +16,8 @@ const corsOptions = {
 app.use(cors());
 app.use(express.json());
 
-app.get("/api/data", async (req, res) => {
-    const { year, month, doctorId, offset = 0, limit = 3 } = req.query;
+module.exports = async (req, res) => {
+  const { year, month, doctorId, offset = 0, limit = 3 } = req.query;
     const confidence1 = 0.7;
     try {
       // AI가 선정한 사진에 해당하는 수술 정보
@@ -156,4 +156,4 @@ app.get("/api/data", async (req, res) => {
     } catch (err) {
       res.status(500).json({ message: "Error fetching data", error: err });
     }
-  });
+};
