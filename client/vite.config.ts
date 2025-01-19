@@ -11,7 +11,6 @@ export default defineConfig(({ command, mode }) => {
   const isBuild = command === "build";
 
   return {
-    root: './client',
     plugins: [react()],
     resolve: {
       alias: {
@@ -33,12 +32,13 @@ export default defineConfig(({ command, mode }) => {
         timeout: 0,
       },
       proxy: {
-        "/api": "http://localhost:5000", // 로컬 개발 시 프록시
+        "/api": "http://localhost:5000", 
       },
     },
-    base: './', // 상대 경로 설정
+    base: './', 
+    root: 'client',
     build: {
-      outDir: 'client/dist',
+      outDir: '../dist', 
     },
   };
 });
