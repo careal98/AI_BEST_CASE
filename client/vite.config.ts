@@ -11,6 +11,10 @@ export default defineConfig(({ command, mode }) => {
   const isBuild = command === "build";
 
   return {
+    base: './', 
+    build: {
+      outDir: './dist', 
+    },
     plugins: [react()],
     resolve: {
       alias: {
@@ -31,14 +35,15 @@ export default defineConfig(({ command, mode }) => {
         host: "localhost",
         timeout: 0,
       },
-      proxy: {
-        "/api": "http://localhost:5000", 
-      },
-    },
-    base: './', 
-    root: 'client',
-    build: {
-      outDir: '../dist', 
+      // proxy: {
+      //   "/server/api": "http://localhost:5000", 
+      // },
+    // proxy: {
+    //   "/server/api": {
+    //     target: 'http://localhost:5',
+    //     changeOrigin: true,
+    //   },
+    // },
     },
   };
 });

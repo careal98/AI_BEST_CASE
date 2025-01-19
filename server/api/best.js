@@ -1,7 +1,24 @@
+import express from "express";
+import { connectDB } from "./src/db.js";
+import dotenv from "dotenv";
+import cors from "cors";
+
+const app = express();
+dotenv.config();
+
+const corsOptions = {
+    // origin: "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST"],
+    optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+app.use(express.json());
 // 베스트 선정하기
-app.post("/api/best", async (req, res) => {
+app.post("/server/api/best", async (req, res) => {
     try {
-      const bestData = req.body;
+        const bestData = req.body;
         const best = bestData?.[0]?.selected;
         const unBest = bestData?.[1]?.unselected;
       // console.dir({ best, unBest });
@@ -92,6 +109,8 @@ app.post("/api/best", async (req, res) => {
         const unCheckedPostResult = await connectDB(sql);
         return unCheckedPostResult;
     });
+
+    res.setHeader('Content-Type', 'application/json');
       // 응답 전송
         res.status(200).json({
             message: "Data received and processed successfully",
@@ -104,4 +123,7 @@ app.post("/api/best", async (req, res) => {
         error: error.message,
     });
     }
+});
+app.listen(5000, () => {
+    console.log('app is running on port 3002');
 });

@@ -7,16 +7,16 @@ const app = express();
 dotenv.config();
 
 const corsOptions = {
-  // origin: "http://localhost:3000",
-  // credentials: true,
-  // methods: ["GET", "POST"],
-  // optionsSuccessStatus: 200,
+    // origin: "http://localhost:5173",
+    credentials: true,
+    methods: ["GET", "POST"],
+    optionsSuccessStatus: 200,
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 // ai 추천이 이미 베스트 리뷰로 선정된 카운트
-app.get("/api/check/count", async (req, res) => {
+app.get("/server/api/check/count", async (req, res) => {
     const { year, month, doctorId } = req.query;
     try {
         const sql = ` SELECT 고객번호 as psEntry 
@@ -40,6 +40,10 @@ app.get("/api/check/count", async (req, res) => {
                     AND A.Surgical_Site COLLATE Korean_Wansung_CI_AS = I.section COLLATE Korean_Wansung_CI_AS
                 )`;
         const results = await connectDB(sql);
+        res.setHeader('Content-Type', 'application/json');    
         res.status(200).json(results);
     } catch {}
+});
+app.listen(5000, () => {
+    console.log('app is running on port 3002');
 });

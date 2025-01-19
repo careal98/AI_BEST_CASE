@@ -59,9 +59,14 @@ export function AI_BEST_CASE() {
     // const offset = data.length;
     try {
       const response = await fetch(
-        `/api/data/?year=${year}&month=${month}&doctorId=${doctorId}&offset=${offset}&limit=${limit}`
+        `/server/api/data/?year=${year}&month=${month}&doctorId=${doctorId}&offset=${offset}&limit=${limit}`,
+        {
+          method:'GET',
+          mode: 'no-cors',
+        }
       );
       const result = await response.json();
+      console.log('res', result);
 
       return result;
     } catch (error) {
@@ -117,7 +122,11 @@ export function AI_BEST_CASE() {
   const checkData = async () => {
     try {
       const response = await fetch(
-        `/api/check/count/?year=${year}&month=${month}&doctorId=${doctorId}`
+        `/server/api/check/count/?year=${year}&month=${month}&doctorId=${doctorId}`,
+        {
+          method:'GET',
+          mode: 'no-cors',
+        }
       );
       const result = await response.json();
 
